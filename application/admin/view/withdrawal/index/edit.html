@@ -1,0 +1,35 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+
+    <div class="form-group">
+        <label for="withdrawer" class="control-label col-xs-12 col-sm-2">提现人</label>
+        <div class="col-xs-12 col-sm-8">
+            <input type="text" class="form-control" id="withdrawer"  value="{$row.withdrawer|htmlentities}" name="row[withdrawer]"  data-rule="required;title" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="charge" class="control-label col-xs-12 col-sm-2">金额</label>
+        <div class="col-xs-12 col-sm-8">
+            <input type="text" class="form-control" id="charge"  value="{$row.charge|htmlentities}" name="row[charge]"  data-rule="required;title" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="withdrawal_time" class="control-label col-xs-12 col-sm-2">金额</label>
+        <div class="col-xs-12 col-sm-8">
+            <input type="text" class="form-control" id="withdrawal_time"  value="{$row.withdrawal_time|htmlentities}" name="row[withdrawal_time]"  data-rule="required;title" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">是否激活</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::radios('row[state]', ['1'=>'待审核', '2'=>'通过','3'=>'拒接'], $row['state'], ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
