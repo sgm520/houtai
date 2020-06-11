@@ -1,72 +1,633 @@
 <!DOCTYPE html>
 <html>
-
-    <head>
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <title>{$site.name}</title>
-        <link rel="shortcut icon" href="__CDN__/assets/img/favicon.ico" />
-        <!-- Bootstrap Core CSS -->
-        <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link href="__CDN__/assets/css/index.css" rel="stylesheet">
-
-        <!-- Plugin CSS -->
-        <link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://cdn.staticfile.org/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://cdn.staticfile.org/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-
-    <body id="page-top">
-
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-menu">
-                        <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand page-scroll" href="#page-top">{$site.name}</a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="navbar-collapse-menu">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{:url('/')}">{:__('Home')}</a></li>
-                        <li><a href="{:url('index/user/index')}">{:__('Member center')}</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
-
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="header-content">
-                            <div class="header-content-inner">
-                                <h1>{$site.name}</h1>
-                            </div>
-                        </div>
+<head>
+    <meta charset="utf-8">
+    <title>ViewUI example</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script type="text/javascript" src="__CDN__/vue/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="__CDN__/assets/css/index.css?v={$Think.config.site.version}" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+    <div class="nav-bar">
+        <div class="nav-l"><a href="http://www.run250.com/news.rar" class="download "
+                              style="color: white; text-decoration: none;">下载客户端</a><span>北京 晴 6°C / 16°C</span></div>
+        <div class="nav-r"><span>阅读科技</span></div>
+    </div>
+    <div id="index">
+        <div class="left wrap">
+            <div class="login-wrap">
+                <div><p class="login-text">登录后阅读新闻提现</p>
+                    <div>
+                        <button type="button" class="el-button el-button--primary" @click="login"><!----><!----><span>立即登录</span>
+                        </button>
                     </div>
                 </div>
             </div>
-        </header>
+            <div class="news-source">
+                <div class="title">平台公告</div>
+                <ul class="app-list"> 通知：请勿使用 邮政 以及地方银行，会影响提现到账时间等。请互相转告。由于用户数量较多，基于服务器带宽考虑，每日限量激活，已转账为准。 联系QQ :
+                    2543227882，客服咨询时间为9：00-18：00.其余时间可留言，次日回复。由于服务器被恶意攻击导致系统出现漏洞，对于昨天开放抢号延时问题给大家道歉，今后客服不再接手抢号服务，只负责问题咨询，抢号由财务统一负责，为避免服务器再一次受到恶意攻击，我们会为已购买阅读科技用户发放推荐码，凭借推荐码添加客服财务进行抢号，无推荐码客服财务不予添加，需要添加客服财务的请咨询介绍人拿取推荐码
+                    。每日无收益时间为21：55-08：00，提现请填写真实姓名，没有姓名无法提现
+                    <li>
+                        <div class="app-name"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="notice">
+                <div class="title">支持平台</div>
+                <ul>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/20/9/106_ab95210e3623aa8860dda92be31a1d46_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">今日头条</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                今日头条极速版内存小，省流量，使用流畅，为你提供有温度有价值的新闻资讯。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/03/30/1/110_e41f1854fe86b0b3120b7ab9c4c77520_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">Fb红板报</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                享誉全球，5亿人都在用的阅读、兴趣交流App。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/03/30/9/110_731f96176af32a2824fc08afabeba01c_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">东方头条</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                新萌网络是一家集“内容聚合”和“智能分发”为一体移动互联网新锐企业，总部位于上海高新技术聚集的张江园区
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/16/10/106_28524f2e7197e378c9757b9ff3d17b0f_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">界面新闻</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                界面，中国高素质人群聚集的新闻及商业社交客户端，500位CEO都在看。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/03/24/11/110_9026773012cba671470da3f6672db1c2_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">ZAKER新闻</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">是老牌的资讯阅读软件。</div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/09/9/110_4deec1256921b2fe7d2021ec531ba68b_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">澎湃新闻</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                专注时政与深度思想的新闻平台。拒绝庸俗，追寻真相。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/20/10/106_909d79c5b52e89349eaa2cb227bdc98d_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">看点快报</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                热点新闻推荐，根据你的兴趣个性化推荐。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/17/4/110_ec4e863961c307fc4dd9689bb9ce9be2_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">一点资讯</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                24小时滚动34省市疫情，快速、贴近、权威、专业！动态疫情地图一目了然，实时更新肺炎数据。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2019/12/05/0/2_178cb07c230ff3cf3ef8a8149161f710_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;"> UC头条</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                UC头条由UC浏览器团队潜心打造，新闻热点资讯一触即达。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/14/7/122_754699b55ac80c8172f6387140773ad9_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">VIVA畅读</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                VIVA畅读是一款文化资讯类阅读应用，主要生产、聚合国内外文化、科技、时政、生活、军事等新闻内容。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/02/10/2_849da861f27f6aed80c36f27fc968f5b_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">上观新闻</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                上观新闻是一款精品App。由解放日报社出品，聚焦深度和思想，提供精选原创新闻，深度分析评论，立足上海，面向全国，观察世界。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/13/2/110_fe38fa08528e336e04513b3db2bdea25_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">淘新闻</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                【新鲜资讯，热点头条】边看有趣的边赚钱
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2017/06/02/2/2_1c3ce272cd4a707fd9ed02675a70a3d0_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">并读新闻</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">并读-精选贴近你的生活资讯</div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2019/09/20/6/110_26fb1ae4ab5199d010acf88a80468957_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">趣看天下</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                趣看天下，海量资讯任你搜罗，可通过对用户兴趣进行智能计算，从而推荐你想看的资讯内容，并且在阅读资讯的同时，让你的阅读产生价值，既让你学到知识，又让你赚到！
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/02/28/9/110_fefad17b7072c4d16b740f3b4be3520c_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">米赚头条</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                红包大派送，看视频也能赚钱，—一款阅读每日头条新闻资讯的内容app
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2016/06/07/10/1_97c401cd345932d579c00e3fdfdff358_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">聚钱宝</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                聚钱宝是颐家公司一款最新分享文章资讯至微信/朋友圈就能赚钱的软件，让您在阅读中获取知识。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/20/5/110_a823e967a55799a4aa4affa5d2a07a2b_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">极速赚</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                极速赚是有银子家旗下最新的转发赚钱平台。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/03/1/110_a3fc40c7218f75ecc679edf644ff10b2_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">中青看点</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                中青看点是一款看新闻、涨知识还能赚零钱的APP。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2018/12/30/7/2_cba0a512f671fc4913e985f27478ea0e_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">爆分网</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                爆分网APP是随手家旗下又一款转发文章就能赚钱的软件，文章阅读单价0.6元，涨分飞快
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/04/17/4/110_ec4e863961c307fc4dd9689bb9ce9be2_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">豆豆资讯</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                豆豆资讯上线福利大放送，限时7毛，抽奖得大礼。
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="img-wrap"><img
+                                src="https://android-artworks.25pp.com/fs08/2020/03/25/0/110_513152d9128a05909f1fd1cd13375dad_con_130x130.png"
+                                alt=""></div>
+                        <div class="notice-content" style="text-align: left;">
+                            <div style="font-weight: 600; padding-bottom: 5px;">闪电盒子</div>
+                            <div class="content" style="color: rgb(136, 136, 136); font-size: 12px;">
+                                闪电盒子是一款既可以看新闻看视频赚钱的软件，提现秒到账！又可以方便的使用各种应用的app。
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div element-loading-background="rgba(255, 255, 255, 0.8)" class="right wrap">
+            <ul class="items">
+                <li class="item">
+                    <div class="item-l"><img src="http://p1.pstatp.com/large/pgc-image/S1VrpBzFiU2JGR"></div>
+                    <div class="item-r"><h2 class="news-title">夜读：今天你可能错过的新闻都在这里</h2>
+                        <div class="news-bot"> 夜读：今天你可能错过的新闻都在这里</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/pgc-image/2036cfc1f0b64802ade7843f265feb16"></div>
+                    <div class="item-r"><h2 class="news-title">泰国八世王逝世纪念日诗琳通公主代十世王敬献花环</h2>
+                        <div class="news-bot"> 泰国八世王逝世纪念日诗琳通公主代十世王敬献花环</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img src="http://p1.pstatp.com/large/pgc-image/S1TCtQ419DJDss"></div>
+                    <div class="item-r"><h2 class="news-title">美国史上首位非裔空军参谋长诞生 称将努力改善种族主义</h2>
+                        <div class="news-bot"> 美国史上首位非裔空军参谋长诞生 称将努力改善种族主义</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img src="http://p9.pstatp.com/large/pgc-image/S1TTpMH5TzHp1A"></div>
+                    <div class="item-r"><h2 class="news-title">罗梅罗妻子拒绝拆除家中游乐园：并未影响他人，我们已经申诉</h2>
+                        <div class="news-bot"> 罗梅罗妻子拒绝拆除家中游乐园：并未影响他人，我们已经申诉</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img src="http://p1.pstatp.com/large/pgc-image/S1QpFTb2e6DcMn"></div>
+                    <div class="item-r"><h2 class="news-title">弗洛伊德葬礼将举行 弟弟：仍感觉不真实，还会打他的电话</h2>
+                        <div class="news-bot"> 弗洛伊德葬礼将举行 弟弟：仍感觉不真实，还会打他的电话</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/dfic-imagehandler/e41a4d7a-a00c-4175-ba5c-38fbda2f72d6">
+                    </div>
+                    <div class="item-r"><h2 class="news-title">伊朗第二波疫情来袭：官员称或已有1500万人感染，必须做最坏准备</h2>
+                        <div class="news-bot"> 伊朗第二波疫情来袭：官员称或已有1500万人感染，必须做最坏准备</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/dfic-imagehandler/918edf8f-2c25-4076-a5d3-8a0c695c5991">
+                    </div>
+                    <div class="item-r"><h2 class="news-title">澳洲妈妈不慎倒车撞死19个月女儿，亲友没有指责，纷纷捐款献爱心</h2>
+                        <div class="news-bot"> 澳洲妈妈不慎倒车撞死19个月女儿，亲友没有指责，纷纷捐款献爱心</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/dfic-imagehandler/c989ca0f-cf9f-41c5-9a8e-aec9cf12844e">
+                    </div>
+                    <div class="item-r"><h2 class="news-title">危机缓解！王燊超于海愿与上港续约将终老，胡尔克前景仍然不明</h2>
+                        <div class="news-bot"> 危机缓解！王燊超于海愿与上港续约将终老，胡尔克前景仍然不明</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p3.pstatp.com/large/pgc-image/864cb6e82b5d4d0591b09421d7c01129"></div>
+                    <div class="item-r"><h2 class="news-title">巴黎圣母院脚手架拆除工程正式展开</h2>
+                        <div class="news-bot"> 巴黎圣母院脚手架拆除工程正式展开</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p3.pstatp.com/large/pgc-image/e3cdd0fdff7b408f862ad51ebf77670b"></div>
+                    <div class="item-r"><h2 class="news-title">拳击规则下，中国选手能否击败美丽死神？</h2>
+                        <div class="news-bot"> 拳击规则下，中国选手能否击败美丽死神？</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/pgc-image/972304da302a472b874a5a55c529eca9"></div>
+                    <div class="item-r"><h2 class="news-title">对黑人男孩吐痰，撞击警察…...美国白人老妇两次被捕</h2>
+                        <div class="news-bot"> 对黑人男孩吐痰，撞击警察…...美国白人老妇两次被捕</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/pgc-image/71731c56d0be4c22ae5ca47fba9a2bdf"></div>
+                    <div class="item-r"><h2 class="news-title">朴槿惠的好日子到头了？"亲信案"李在镕又有新情况，韩国好戏开场</h2>
+                        <div class="news-bot"> 朴槿惠的好日子到头了？"亲信案"李在镕又有新情况，韩国好戏开场</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/pgc-image/8c67102d965148f1ad7b065291939ae0"></div>
+                    <div class="item-r"><h2 class="news-title">联合国人权专家揭日本趁疫情期间加速向海洋排放核废水</h2>
+                        <div class="news-bot"> 联合国人权专家揭日本趁疫情期间加速向海洋排放核废水</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/pgc-image/dbfdd6b9e6e149a6b997798a8b6c6aba"></div>
+                    <div class="item-r"><h2 class="news-title">美国两条狗被关在车内活活闷死，而狗主人还在不远处学训狗课</h2>
+                        <div class="news-bot"> 美国两条狗被关在车内活活闷死，而狗主人还在不远处学训狗课</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/pgc-image/ca4bc292790a4b22876a95599064009d"></div>
+                    <div class="item-r"><h2 class="news-title">矛盾加深！美国抗议者深夜攻进西雅图市政厅，高喊要求市长辞职</h2>
+                        <div class="news-bot"> 矛盾加深！美国抗议者深夜攻进西雅图市政厅，高喊要求市长辞职</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/pgc-image/281314fa1d7143c68474a4d76e42d530"></div>
+                    <div class="item-r"><h2 class="news-title">美国一白人律师向抗议活动中黑人少年吐口水被捕</h2>
+                        <div class="news-bot"> 美国一白人律师向抗议活动中黑人少年吐口水被捕</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img src="http://p9.pstatp.com/large/pgc-image/S1SXR5l33zw2sC"></div>
+                    <div class="item-r"><h2 class="news-title">乔丹参加捕鱼锦标赛，捕获200公斤马林鱼</h2>
+                        <div class="news-bot"> 乔丹参加捕鱼锦标赛，捕获200公斤马林鱼</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img src="http://p1.pstatp.com/large/pgc-image/S1TeF9r4DLhkjd"></div>
+                    <div class="item-r"><h2 class="news-title">新泽西州白人重演“跪杀”嘲讽抗议者</h2>
+                        <div class="news-bot"> 新泽西州白人重演“跪杀”嘲讽抗议者</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p3.pstatp.com/large/pgc-image/75ffc1a5faeb4c26b3254be5d0e65c1f"></div>
+                    <div class="item-r"><h2 class="news-title">尼日利亚在华留学生挺中国：许多尼日利亚人正在妖魔化中国政府</h2>
+                        <div class="news-bot"> 尼日利亚在华留学生挺中国：许多尼日利亚人正在妖魔化中国政府</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p3.pstatp.com/large/pgc-image/611d6ef1fe694421ae3115ec364809ca"></div>
+                    <div class="item-r"><h2 class="news-title">印度德里火葬场超载，新冠死者被露天架起柴火焚化</h2>
+                        <div class="news-bot"> 印度德里火葬场超载，新冠死者被露天架起柴火焚化</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img src="http://p3.pstatp.com/large/pgc-image/S1VUXjG6by1pzS"></div>
+                    <div class="item-r"><h2 class="news-title">山东冠县就“农家女被冒名顶替上大学”一事开展调查</h2>
+                        <div class="news-bot"> 山东冠县就“农家女被冒名顶替上大学”一事开展调查</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p9.pstatp.com/large/pgc-image/06502988c78a4929883ef4b24d75efd9"></div>
+                    <div class="item-r"><h2 class="news-title">日本要给钓鱼岛“改名”？我海警用实际行动宣告：放弃一切幻想</h2>
+                        <div class="news-bot"> 日本要给钓鱼岛“改名”？我海警用实际行动宣告：放弃一切幻想</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/pgc-image/aff7760a62fd4a7bad0b2d934fa50998"></div>
+                    <div class="item-r"><h2 class="news-title">今年5月中国再添两艘094型核潜艇？中国水下核力量为何让美国焦虑</h2>
+                        <div class="news-bot"> 今年5月中国再添两艘094型核潜艇？中国水下核力量为何让美国焦虑</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p3.pstatp.com/large/pgc-image/737d9708dd4c4dea866ff8a58c2997de"></div>
+                    <div class="item-r"><h2 class="news-title">孙杨进京！身材健硕现身首都机场，气场依旧定未放弃游泳王者梦想</h2>
+                        <div class="news-bot"> 孙杨进京！身材健硕现身首都机场，气场依旧定未放弃游泳王者梦想</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p3.pstatp.com/large/pgc-image/7a27d3a4704340f4b53d749eebecb0c2"></div>
+                    <div class="item-r"><h2 class="news-title">抗议活动愈演愈烈，美国警局门口被人放了一个瞪大眼睛的滴血猪头</h2>
+                        <div class="news-bot"> 抗议活动愈演愈烈，美国警局门口被人放了一个瞪大眼睛的滴血猪头</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/pgc-image/f1bf8b2a13934e9bb18880e3f29c00d0"></div>
+                    <div class="item-r"><h2 class="news-title">向拉达克增兵只是幌子，印度在边境地区猛烈开火，打死100多人</h2>
+                        <div class="news-bot"> 向拉达克增兵只是幌子，印度在边境地区猛烈开火，打死100多人</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p9.pstatp.com/large/pgc-image/7b7bf076d0aa4f03943a74ee7fd6bc99"></div>
+                    <div class="item-r"><h2 class="news-title">美国1700名科学家罢工支持，警察为棺材开道，全美直播黑人葬礼</h2>
+                        <div class="news-bot"> 美国1700名科学家罢工支持，警察为棺材开道，全美直播黑人葬礼</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p3.pstatp.com/large/pgc-image/d9a77e06bdaa4d1c85d4351f3c8f20a4"></div>
+                    <div class="item-r"><h2 class="news-title">击败巅峰张继科，终结樊振东37连胜，奥恰今天再爆发问鼎大师赛</h2>
+                        <div class="news-bot"> 击败巅峰张继科，终结樊振东37连胜，奥恰今天再爆发问鼎大师赛</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p3.pstatp.com/large/pgc-image/83ffceecea054114ab06234f3d950baa"></div>
+                    <div class="item-r"><h2 class="news-title">蓬佩奥大骂汇丰向中国卑躬屈膝，华春莹回应</h2>
+                        <div class="news-bot"> 蓬佩奥大骂汇丰向中国卑躬屈膝，华春莹回应</div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item-l"><img
+                            src="http://p1.pstatp.com/large/pgc-image/a491bdcd2f274184b95569da3b02fd44"></div>
+                    <div class="item-r"><h2 class="news-title">不止大豆，阿根廷8万吨高粱也将运抵中国！美澳面临巨大竞争压力</h2>
+                        <div class="news-bot"> 不止大豆，阿根廷8万吨高粱也将运抵中国！美澳面临巨大竞争压力</div>
+                    </div>
+                </li>
+            </ul>
+            <div class="el-loading-mask" style="background-color: rgba(255, 255, 255, 0.8); display: none;">
+                <div class="el-loading-spinner">
+                    <svg viewBox="25 25 50 50" class="circular">
+                        <circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
+                    </svg><!----></div>
+            </div>
+        </div>
+        <div class="right-r"><!---->
+            <div class="news-recent">
+                <div class="title">24小时新闻</div>
+                <ul class="groups">
+                    <li class="group">
+                        <div class="group-l"><img src="/img/new1.8eaf93eb.jpg" alt=""></div>
+                        <div class="group-r">河南"4名儿童被埋" 记者采访遭多名不明身份人员殴打，手机被抢</div>
+                    </li>
+                    <li class="group">
+                        <div class="group-l"><img src="/img/new2.39f48db8.jpg" alt=""></div>
+                        <div class="group-r">一季报密集出炉，刘格菘、萧楠、邱栋荣等明星基金经理最新持仓来了</div>
+                    </li>
+                    <li class="group">
+                        <div class="group-l"><img src="/img/new3.03a70f21.jpg" alt=""></div>
+                        <div class="group-r">【我国经济将转"危"为"机"，全年GDP或可达3%】</div>
+                    </li>
+                    <li class="group">
+                        <div class="group-l"><img src="/img/new4.5eb2f53d.jpg" alt=""></div>
+                        <div class="group-r">【基金2019年年报观点：逆势投资正当时】</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="news-recent" style="text-align: left;">
+                <span> © 2020 阅读</span><span><br>中国互联网举报中心 京ICP证140321号</span><span><br>京ICP备12025423号-3 网络文化经营许可证</span><span><br>营业执照</span><span><br>京-非经营性-2016-0032</span><span><br>跟帖评论自律管理承诺书</span><span><br>公司名称：北京指尖阅读科技</span><span><br>京公网安备 11000002002023号</span>
+            </div>
+        </div>
+    </div>
+    <el-dialog
+            :title="title"
+            :visible.sync="dialogVisible"
+            width="450px"
+            :before-close="handleClose">
+        <div class="login-content" v-bind:class="{move: isActive }">
+            <div class="login-l">
+                <div class="input-item el-input el-input--prefix el-input--suffix">
+                    <input type="text" v-model="form.phone" autocomplete="off" placeholder="手机号" maxlength="11" class="el-input__inner"><span
+                        class="el-input__prefix"><i class="el-input__icon el-icon-user-solid"></i></span>
+                </div>
+                <div class="input-item el-input el-input--prefix el-input--suffix">
+                    <input type="password" v-model="form.password"autocomplete="off" placeholder="密码"class="el-input__inner"><span
+                        class="el-input__prefix"><i class="el-input__icon el-icon-document"></i></span>
+                   </div>
+                <div slot="footer" class="dialog-footer">
+                    <button type="button" class="el-button el-button--primary" style="width: 100%;" @click="submitLogin()">
+                     <span> 登录 </span>
+                    </button>
+                    <div class="to-register">
+                        <div> 没有账号？ <span class="register-btn" @click="register(2)">注册</span></div>
+                        <div class="forget-pasd">忘记密码</div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-r">
+                <div class="input-item el-input el-input--prefix el-input--suffix">
+                    <input type="text"  v-model="form.phone" autocomplete="off" placeholder="手机号" maxlength="11" class="el-input__inner"><span
+                        class="el-input__prefix"><i class="el-input__icon el-icon-user-solid"></i></span>
+                    </div>
+                <div class="input-item el-input el-input--prefix el-input--suffix">
+                    <input type="password" v-model="form.password" autocomplete="off" placeholder="密码" class="el-input__inner">
+                    <span
+                        class="el-input__prefix"><i class="el-input__icon el-icon-user"></i>
+                    </span>
+                </div>
+                <div slot="footer" class="dialog-footer">
+                    <button type="button" class="el-button el-button--primary" style="width: 100%;" @click="submitRegister()"><span>注 册 </span>
+                    </button>
+                    <div class="to-login" @click="login">已有账号登录</div>
+                </div>
+            </div>
+        </div>
+        </span>
+    </el-dialog>
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            dialogVisible: false,
+            title: '登录',
+            isActive: false,
+            form: {
+                phone: '',
+                password: ""
+            }
+        },
+        methods: {
+            login: function () {
+                this.dialogVisible = true
+                this.isActive = false;
+            },
+            register: function () {
+                this.title = "注册";
+                this.isActive = true;
+            },
+            handleClose(done) {
+                done();
+            },
+            submitRegister:function () {
+              if(this.CheckRule()){
+                  console.log(this.form)
+                  $.ajax({
+                      type: "POST",
+                      url: "{:url('user/register')}",
+                      data: this.form,
+                      dataType: "json",
+                      success: function(data){
 
-        <!-- jQuery -->
-        <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </body>
-
+                      }
+                  });
+              }
+            },
+            submitLogin:function () {
+                var _this=this;
+                if(this.CheckRule()){
+                    $.ajax({
+                        type: "POST",
+                        url: "{:url('user/login')}",
+                        data: this.form,
+                        dataType: "json",
+                        success: function(data){
+                           if(parseInt(data.code)==0){
+                               _this.$message.error(data.msg);
+                           }
+                           else{
+                               _this.$message.success(data.msg);
+                           }
+                        }
+                    });
+                }
+            },
+            CheckRule:function () {
+                 if(this.form.phone ==""){
+                     this.$message.error('电话不能为空');
+                     return false
+                 }
+                if(this.form.password ==""){
+                    this.$message.error('密码不能为空');
+                    return false
+                }
+                return  true
+            }
+        }
+    })
+</script>
+</body>
 </html>

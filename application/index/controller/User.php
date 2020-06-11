@@ -157,19 +157,12 @@ class User extends Frontend
      */
     public function login()
     {
-        $url = $this->request->request('url', '');
-        if ($this->auth->id) {
-            $this->success(__('You\'ve logged in, do not login again'), $url ? $url : url('user/index'));
-        }
-        if ($this->request->isPost()) {
-            $account = $this->request->post('account');
+
+            $account = $this->request->post('phone');
             $password = $this->request->post('password');
-            $keeplogin = (int)$this->request->post('keeplogin');
-            $token = $this->request->post('__token__');
             $rule = [
                 'account'   => 'require|length:3,50',
                 'password'  => 'require|length:6,30',
-                '__token__' => 'require|token',
             ];
 
             $msg = [
@@ -181,29 +174,14 @@ class User extends Frontend
             $data = [
                 'account'   => $account,
                 'password'  => $password,
-                '__token__' => $token,
             ];
             $validate = new Validate($rule, $msg);
             $result = $validate->check($data);
             if (!$result) {
-                $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
-                return false;
+                return json(['code'=>0,'msg'=>$validate->getError()]);
             }
-            if ($this->auth->login($account, $password)) {
-                $this->success(__('Logged in successful'), $url ? $url : url('user/index'));
-            } else {
-                $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
-            }
-        }
-        //判断来源
-        $referer = $this->request->server('HTTP_REFERER');
-        if (!$url && (strtolower(parse_url($referer, PHP_URL_HOST)) == strtolower($this->request->host()))
-            && !preg_match("/(user\/login|user\/register|user\/logout)/i", $referer)) {
-            $url = $referer;
-        }
-        $this->view->assign('url', $url);
-        $this->view->assign('title', __('Login'));
-        return $this->view->fetch();
+            $result=$this->auth->login($account, $password);
+            return  json($result);
     }
 
     /**

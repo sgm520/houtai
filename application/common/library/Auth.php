@@ -198,23 +198,17 @@ class Auth
         $field = Validate::is($account, 'email') ? 'email' : (Validate::regex($account, '/^1\d{10}$/') ? 'mobile' : 'username');
         $user = User::get([$field => $account]);
         if (!$user) {
-            $this->setError('Account is incorrect');
-            return false;
-        }
 
+            return ['code'=>'0','msg'=>'账号不存在'];
+        }
         if ($user->status != 'normal') {
-            $this->setError('Account is locked');
-            return false;
+
+            return ['code'=>'0','msg'=>'账号被禁止'];
         }
         if ($user->password != $this->getEncryptPassword($password, $user->salt)) {
-            $this->setError('Password is incorrect');
-            return false;
+            return ['code'=>'0','msg'=>'密码不正确'];
         }
-
-        //直接登录会员
-        $this->direct($user->id);
-
-        return true;
+        return ['code'=>'1','msg'=>'登录成功','data'=>$user->id];
     }
 
     /**
