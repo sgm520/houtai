@@ -837,6 +837,7 @@
                 done();
             },
             submitRegister: function () {
+                var _this = this;
                 if (this.CheckRule()) {
                     $.ajax({
                         type: "POST",
