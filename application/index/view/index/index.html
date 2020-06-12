@@ -109,6 +109,7 @@
             </div>
             <div class="news-source">
                 <div class="title">平台公告</div>
+                {if condition="$Think.session.userInfo neq null"}
                 <ul class="app-list"> 通知：请勿使用 邮政 以及地方银行，会影响提现到账时间等。请互相转告。由于用户数量较多，基于服务器带宽考虑，每日限量激活，已转账为准。 联系QQ :
                     2543227882，客服咨询时间为9：00-18：00.其余时间可留言，次日回复。由于服务器被恶意攻击导致系统出现漏洞，对于昨天开放抢号延时问题给大家道歉，今后客服不再接手抢号服务，只负责问题咨询，抢号由财务统一负责，为避免服务器再一次受到恶意攻击，我们会为已购买阅读科技用户发放推荐码，凭借推荐码添加客服财务进行抢号，无推荐码客服财务不予添加，需要添加客服财务的请咨询介绍人拿取推荐码
                     。每日无收益时间为21：55-08：00，提现请填写真实姓名，没有姓名无法提现
@@ -116,9 +117,11 @@
                         <div class="app-name"></div>
                     </li>
                 </ul>
+                {/if}
             </div>
             <div class="notice">
                 <div class="title">支持平台</div>
+                {if condition="$Think.session.userInfo neq null"}
                 <ul>
                     <li class="item">
                         <div class="img-wrap"><img
@@ -348,6 +351,7 @@
                         </div>
                     </li>
                 </ul>
+                {/if}
             </div>
         </div>
         <div element-loading-background="rgba(255, 255, 255, 0.8)" class="right wrap">
