@@ -7,23 +7,105 @@
     <script type="text/javascript" src="__CDN__/vue/vue.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <link href="__CDN__/assets/css/index.css?v={$Think.config.site.version}" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: "iconfont";
+            src: url('//at.alicdn.com/t/font_1767518_ho728qlwqgl.eot?t=1587541685990'); /* IE9 */
+            src: url('//at.alicdn.com/t/font_1767518_ho728qlwqgl.eot?t=1587541685990#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'),
+            url('//at.alicdn.com/t/font_1767518_ho728qlwqgl.woff?t=1587541685990') format('woff'),
+            url('//at.alicdn.com/t/font_1767518_ho728qlwqgl.ttf?t=1587541685990') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */ url('//at.alicdn.com/t/font_1767518_ho728qlwqgl.svg?t=1587541685990#iconfont') format('svg'); /* iOS 4.1- */
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .icon-VIP:before {
+            content: "\e614";
+        }
+
+        .icon-iconmoney:before {
+            content: "\e632";
+        }
+
+        .icon-jine:before {
+            content: "\e633";
+        }
+
+        .icon-yue:before {
+            content: "\e60d";
+        }
+
+        .icon-yinhangqia:before {
+            content: "\e620";
+        }
+
+        .icon-jilu:before {
+            content: "\e604";
+        }
+
+        .icon-tixian:before {
+            content: "\e639";
+        }
+
+    </style>
 </head>
 <body>
 <div id="app">
     <div class="nav-bar">
         <div class="nav-l"><a href="http://www.run250.com/news.rar" class="download "
                               style="color: white; text-decoration: none;">下载客户端</a><span>北京 晴 6°C / 16°C</span></div>
-        <div class="nav-r"><span>阅读科技</span></div>
+        <div class="nav-r"><span>阅读科技{$Think.session.user_id}</span></div>
     </div>
     <div id="index">
         <div class="left wrap">
             <div class="login-wrap">
-                <div><p class="login-text">登录后阅读新闻提现</p>
+                {if condition="$Think.session.userInfo neq null"}
+                <div class="user-info">
+                    <div class="logout" @click="logout()"><span>退出登录</span></div>
+                    <div class="avatar"><i class="el-icon-s-custom"></i></div>
+                    <div class="username">{{UserInfo['mobile']}}</div>
+                    <div class="group" >
+                        <div class="group-item" @click="bankdialogVisible =true"><i class="iconfont icon-yinhangqia"
+                                                   style="vertical-align: middle;"></i> <span
+                                style="vertical-align: middle;">银行卡</span></div>
+                        <div class="cut-line"></div>
+                        <div class="group-item" @click="WithdrawaldialogVisibl =true"><i class="iconfont icon-tixian"
+                                                   style="vertical-align: middle;"></i> <span
+                                style="vertical-align: middle;"> 提现/转账</span></div>
+                    </div>
+                    <div class="group">
+                        <div class="group-item" @click="readRecode"><i class="iconfont icon-jilu"
+                                                                       style="vertical-align: middle;"></i> <span
+                                style="vertical-align: middle;">阅读记录</span></div>
+                        <div class="cut-line"></div>
+                        <div class="group-item" @click="opentixianrecode()"><i class="iconfont icon-jilu"
+                                                   style="vertical-align: middle;"></i><span
+                                style="vertical-align: middle;">提现记录</span></div>
+                    </div>
+                    <div class="vip" v-if="UserInfo.level ==2">
+                        <div style="margin-right: 5px;"><i class="iconfont icon-VIP"></i></div>
+                        <div><p style="text-align: left;" >VIP已激活</p></div>
+                    </div>
+                    <div class="balance"><i class="iconfont icon-yue" style="vertical-align: middle;"></i><span
+                            style="vertical-align: middle;"> 余额: <span
+                            style="font-weight: 600;">{{UserInfo['balance']}}</span></span></div>
+                    <div style="padding: 10px 0px 5px;"><!----><!----><!----></div>
+                </div>
+                {else /}
+                <div>
+                    <p class="login-text">登录后阅读新闻提现</p>
                     <div>
-                        <button type="button" class="el-button el-button--primary" @click="login"><!----><!----><span>立即登录</span>
+                        <button type="button" class="el-button el-button--primary" @click="login"><!---->
+                            <!----><span>立即登录</span>
                         </button>
                     </div>
                 </div>
+                {/if}
             </div>
             <div class="news-source">
                 <div class="title">平台公告</div>
@@ -270,212 +352,15 @@
         </div>
         <div element-loading-background="rgba(255, 255, 255, 0.8)" class="right wrap">
             <ul class="items">
-                <li class="item">
-                    <div class="item-l"><img src="http://p1.pstatp.com/large/pgc-image/S1VrpBzFiU2JGR"></div>
-                    <div class="item-r"><h2 class="news-title">夜读：今天你可能错过的新闻都在这里</h2>
-                        <div class="news-bot"> 夜读：今天你可能错过的新闻都在这里</div>
+                {volist name="newlist" id="vo"}
+                <li class="item" @click="newdetail({$vo['id']})">
+                    <div class="item-l"><img src="{$vo['thumb']}"></div>
+                    <div class="item-r"><h2 class="news-title">{$vo['title']}</h2>
+                        <div class="news-bot"> {$vo['subtitle']}</div>
                     </div>
                 </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/pgc-image/2036cfc1f0b64802ade7843f265feb16"></div>
-                    <div class="item-r"><h2 class="news-title">泰国八世王逝世纪念日诗琳通公主代十世王敬献花环</h2>
-                        <div class="news-bot"> 泰国八世王逝世纪念日诗琳通公主代十世王敬献花环</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img src="http://p1.pstatp.com/large/pgc-image/S1TCtQ419DJDss"></div>
-                    <div class="item-r"><h2 class="news-title">美国史上首位非裔空军参谋长诞生 称将努力改善种族主义</h2>
-                        <div class="news-bot"> 美国史上首位非裔空军参谋长诞生 称将努力改善种族主义</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img src="http://p9.pstatp.com/large/pgc-image/S1TTpMH5TzHp1A"></div>
-                    <div class="item-r"><h2 class="news-title">罗梅罗妻子拒绝拆除家中游乐园：并未影响他人，我们已经申诉</h2>
-                        <div class="news-bot"> 罗梅罗妻子拒绝拆除家中游乐园：并未影响他人，我们已经申诉</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img src="http://p1.pstatp.com/large/pgc-image/S1QpFTb2e6DcMn"></div>
-                    <div class="item-r"><h2 class="news-title">弗洛伊德葬礼将举行 弟弟：仍感觉不真实，还会打他的电话</h2>
-                        <div class="news-bot"> 弗洛伊德葬礼将举行 弟弟：仍感觉不真实，还会打他的电话</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/dfic-imagehandler/e41a4d7a-a00c-4175-ba5c-38fbda2f72d6">
-                    </div>
-                    <div class="item-r"><h2 class="news-title">伊朗第二波疫情来袭：官员称或已有1500万人感染，必须做最坏准备</h2>
-                        <div class="news-bot"> 伊朗第二波疫情来袭：官员称或已有1500万人感染，必须做最坏准备</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/dfic-imagehandler/918edf8f-2c25-4076-a5d3-8a0c695c5991">
-                    </div>
-                    <div class="item-r"><h2 class="news-title">澳洲妈妈不慎倒车撞死19个月女儿，亲友没有指责，纷纷捐款献爱心</h2>
-                        <div class="news-bot"> 澳洲妈妈不慎倒车撞死19个月女儿，亲友没有指责，纷纷捐款献爱心</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/dfic-imagehandler/c989ca0f-cf9f-41c5-9a8e-aec9cf12844e">
-                    </div>
-                    <div class="item-r"><h2 class="news-title">危机缓解！王燊超于海愿与上港续约将终老，胡尔克前景仍然不明</h2>
-                        <div class="news-bot"> 危机缓解！王燊超于海愿与上港续约将终老，胡尔克前景仍然不明</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p3.pstatp.com/large/pgc-image/864cb6e82b5d4d0591b09421d7c01129"></div>
-                    <div class="item-r"><h2 class="news-title">巴黎圣母院脚手架拆除工程正式展开</h2>
-                        <div class="news-bot"> 巴黎圣母院脚手架拆除工程正式展开</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p3.pstatp.com/large/pgc-image/e3cdd0fdff7b408f862ad51ebf77670b"></div>
-                    <div class="item-r"><h2 class="news-title">拳击规则下，中国选手能否击败美丽死神？</h2>
-                        <div class="news-bot"> 拳击规则下，中国选手能否击败美丽死神？</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/pgc-image/972304da302a472b874a5a55c529eca9"></div>
-                    <div class="item-r"><h2 class="news-title">对黑人男孩吐痰，撞击警察…...美国白人老妇两次被捕</h2>
-                        <div class="news-bot"> 对黑人男孩吐痰，撞击警察…...美国白人老妇两次被捕</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/pgc-image/71731c56d0be4c22ae5ca47fba9a2bdf"></div>
-                    <div class="item-r"><h2 class="news-title">朴槿惠的好日子到头了？"亲信案"李在镕又有新情况，韩国好戏开场</h2>
-                        <div class="news-bot"> 朴槿惠的好日子到头了？"亲信案"李在镕又有新情况，韩国好戏开场</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/pgc-image/8c67102d965148f1ad7b065291939ae0"></div>
-                    <div class="item-r"><h2 class="news-title">联合国人权专家揭日本趁疫情期间加速向海洋排放核废水</h2>
-                        <div class="news-bot"> 联合国人权专家揭日本趁疫情期间加速向海洋排放核废水</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/pgc-image/dbfdd6b9e6e149a6b997798a8b6c6aba"></div>
-                    <div class="item-r"><h2 class="news-title">美国两条狗被关在车内活活闷死，而狗主人还在不远处学训狗课</h2>
-                        <div class="news-bot"> 美国两条狗被关在车内活活闷死，而狗主人还在不远处学训狗课</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/pgc-image/ca4bc292790a4b22876a95599064009d"></div>
-                    <div class="item-r"><h2 class="news-title">矛盾加深！美国抗议者深夜攻进西雅图市政厅，高喊要求市长辞职</h2>
-                        <div class="news-bot"> 矛盾加深！美国抗议者深夜攻进西雅图市政厅，高喊要求市长辞职</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/pgc-image/281314fa1d7143c68474a4d76e42d530"></div>
-                    <div class="item-r"><h2 class="news-title">美国一白人律师向抗议活动中黑人少年吐口水被捕</h2>
-                        <div class="news-bot"> 美国一白人律师向抗议活动中黑人少年吐口水被捕</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img src="http://p9.pstatp.com/large/pgc-image/S1SXR5l33zw2sC"></div>
-                    <div class="item-r"><h2 class="news-title">乔丹参加捕鱼锦标赛，捕获200公斤马林鱼</h2>
-                        <div class="news-bot"> 乔丹参加捕鱼锦标赛，捕获200公斤马林鱼</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img src="http://p1.pstatp.com/large/pgc-image/S1TeF9r4DLhkjd"></div>
-                    <div class="item-r"><h2 class="news-title">新泽西州白人重演“跪杀”嘲讽抗议者</h2>
-                        <div class="news-bot"> 新泽西州白人重演“跪杀”嘲讽抗议者</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p3.pstatp.com/large/pgc-image/75ffc1a5faeb4c26b3254be5d0e65c1f"></div>
-                    <div class="item-r"><h2 class="news-title">尼日利亚在华留学生挺中国：许多尼日利亚人正在妖魔化中国政府</h2>
-                        <div class="news-bot"> 尼日利亚在华留学生挺中国：许多尼日利亚人正在妖魔化中国政府</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p3.pstatp.com/large/pgc-image/611d6ef1fe694421ae3115ec364809ca"></div>
-                    <div class="item-r"><h2 class="news-title">印度德里火葬场超载，新冠死者被露天架起柴火焚化</h2>
-                        <div class="news-bot"> 印度德里火葬场超载，新冠死者被露天架起柴火焚化</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img src="http://p3.pstatp.com/large/pgc-image/S1VUXjG6by1pzS"></div>
-                    <div class="item-r"><h2 class="news-title">山东冠县就“农家女被冒名顶替上大学”一事开展调查</h2>
-                        <div class="news-bot"> 山东冠县就“农家女被冒名顶替上大学”一事开展调查</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p9.pstatp.com/large/pgc-image/06502988c78a4929883ef4b24d75efd9"></div>
-                    <div class="item-r"><h2 class="news-title">日本要给钓鱼岛“改名”？我海警用实际行动宣告：放弃一切幻想</h2>
-                        <div class="news-bot"> 日本要给钓鱼岛“改名”？我海警用实际行动宣告：放弃一切幻想</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/pgc-image/aff7760a62fd4a7bad0b2d934fa50998"></div>
-                    <div class="item-r"><h2 class="news-title">今年5月中国再添两艘094型核潜艇？中国水下核力量为何让美国焦虑</h2>
-                        <div class="news-bot"> 今年5月中国再添两艘094型核潜艇？中国水下核力量为何让美国焦虑</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p3.pstatp.com/large/pgc-image/737d9708dd4c4dea866ff8a58c2997de"></div>
-                    <div class="item-r"><h2 class="news-title">孙杨进京！身材健硕现身首都机场，气场依旧定未放弃游泳王者梦想</h2>
-                        <div class="news-bot"> 孙杨进京！身材健硕现身首都机场，气场依旧定未放弃游泳王者梦想</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p3.pstatp.com/large/pgc-image/7a27d3a4704340f4b53d749eebecb0c2"></div>
-                    <div class="item-r"><h2 class="news-title">抗议活动愈演愈烈，美国警局门口被人放了一个瞪大眼睛的滴血猪头</h2>
-                        <div class="news-bot"> 抗议活动愈演愈烈，美国警局门口被人放了一个瞪大眼睛的滴血猪头</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/pgc-image/f1bf8b2a13934e9bb18880e3f29c00d0"></div>
-                    <div class="item-r"><h2 class="news-title">向拉达克增兵只是幌子，印度在边境地区猛烈开火，打死100多人</h2>
-                        <div class="news-bot"> 向拉达克增兵只是幌子，印度在边境地区猛烈开火，打死100多人</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p9.pstatp.com/large/pgc-image/7b7bf076d0aa4f03943a74ee7fd6bc99"></div>
-                    <div class="item-r"><h2 class="news-title">美国1700名科学家罢工支持，警察为棺材开道，全美直播黑人葬礼</h2>
-                        <div class="news-bot"> 美国1700名科学家罢工支持，警察为棺材开道，全美直播黑人葬礼</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p3.pstatp.com/large/pgc-image/d9a77e06bdaa4d1c85d4351f3c8f20a4"></div>
-                    <div class="item-r"><h2 class="news-title">击败巅峰张继科，终结樊振东37连胜，奥恰今天再爆发问鼎大师赛</h2>
-                        <div class="news-bot"> 击败巅峰张继科，终结樊振东37连胜，奥恰今天再爆发问鼎大师赛</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p3.pstatp.com/large/pgc-image/83ffceecea054114ab06234f3d950baa"></div>
-                    <div class="item-r"><h2 class="news-title">蓬佩奥大骂汇丰向中国卑躬屈膝，华春莹回应</h2>
-                        <div class="news-bot"> 蓬佩奥大骂汇丰向中国卑躬屈膝，华春莹回应</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-l"><img
-                            src="http://p1.pstatp.com/large/pgc-image/a491bdcd2f274184b95569da3b02fd44"></div>
-                    <div class="item-r"><h2 class="news-title">不止大豆，阿根廷8万吨高粱也将运抵中国！美澳面临巨大竞争压力</h2>
-                        <div class="news-bot"> 不止大豆，阿根廷8万吨高粱也将运抵中国！美澳面临巨大竞争压力</div>
-                    </div>
-                </li>
+                {/volist}
+
             </ul>
             <div class="el-loading-mask" style="background-color: rgba(255, 255, 255, 0.8); display: none;">
                 <div class="el-loading-spinner">
@@ -519,16 +404,19 @@
         <div class="login-content" v-bind:class="{move: isActive }">
             <div class="login-l">
                 <div class="input-item el-input el-input--prefix el-input--suffix">
-                    <input type="text" v-model="form.phone" autocomplete="off" placeholder="手机号" maxlength="11" class="el-input__inner"><span
+                    <input type="text" v-model="form.phone" autocomplete="off" placeholder="手机号" maxlength="11"
+                           class="el-input__inner"><span
                         class="el-input__prefix"><i class="el-input__icon el-icon-user-solid"></i></span>
                 </div>
                 <div class="input-item el-input el-input--prefix el-input--suffix">
-                    <input type="password" v-model="form.password"autocomplete="off" placeholder="密码"class="el-input__inner"><span
+                    <input type="password" v-model="form.password" autocomplete="off" placeholder="密码"
+                           class="el-input__inner"><span
                         class="el-input__prefix"><i class="el-input__icon el-icon-document"></i></span>
-                   </div>
+                </div>
                 <div slot="footer" class="dialog-footer">
-                    <button type="button" class="el-button el-button--primary" style="width: 100%;" @click="submitLogin()">
-                     <span> 登录 </span>
+                    <button type="button" class="el-button el-button--primary" style="width: 100%;"
+                            @click="submitLogin()">
+                        <span> 登录 </span>
                     </button>
                     <div class="to-register">
                         <div> 没有账号？ <span class="register-btn" @click="register(2)">注册</span></div>
@@ -538,17 +426,20 @@
             </div>
             <div class="login-r">
                 <div class="input-item el-input el-input--prefix el-input--suffix">
-                    <input type="text"  v-model="form.phone" autocomplete="off" placeholder="手机号" maxlength="11" class="el-input__inner"><span
+                    <input type="text" v-model="form.phone" autocomplete="off" placeholder="手机号" maxlength="11"
+                           class="el-input__inner"><span
                         class="el-input__prefix"><i class="el-input__icon el-icon-user-solid"></i></span>
-                    </div>
+                </div>
                 <div class="input-item el-input el-input--prefix el-input--suffix">
-                    <input type="password" v-model="form.password" autocomplete="off" placeholder="密码" class="el-input__inner">
+                    <input type="password" v-model="form.password" autocomplete="off" placeholder="密码"
+                           class="el-input__inner">
                     <span
-                        class="el-input__prefix"><i class="el-input__icon el-icon-user"></i>
+                            class="el-input__prefix"><i class="el-input__icon el-icon-user"></i>
                     </span>
                 </div>
                 <div slot="footer" class="dialog-footer">
-                    <button type="button" class="el-button el-button--primary" style="width: 100%;" @click="submitRegister()"><span>注 册 </span>
+                    <button type="button" class="el-button el-button--primary" style="width: 100%;"
+                            @click="submitRegister()"><span>注 册 </span>
                     </button>
                     <div class="to-login" @click="login">已有账号登录</div>
                 </div>
@@ -556,6 +447,194 @@
         </div>
         </span>
     </el-dialog>
+    <el-dialog
+            title="阅读记录"
+            :visible.sync="readdialogVisible"
+            width="30%"
+            :before-close="handleClose">
+        <el-table
+                :data="tableData"
+                style="width: 100%">
+            <el-table-column
+                    prop="type"
+                    label="新闻来源"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="money"
+                    label="收益金额"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="time"
+                    label="收益时间">
+            </el-table-column>
+        </el-table>
+
+    </el-dialog>
+    <el-dialog
+            :visible.sync="bankdialogVisible"
+            width="30%"
+            :before-close="handleClose">
+        <form class="el-form">
+            <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">姓名</label>
+                <div class="el-form-item__content" style="margin-left: 80px;">
+                    <div class="el-input">
+                        <input type="text" autocomplete="off" class="el-input__inner" v-model="formbank.name">
+                    </div>
+                </div>
+            </div>
+            <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">开户行</label>
+                <div class="el-form-item__content" style="margin-left: 80px;">
+                    <div class="el-input">
+                        <input type="text" autocomplete="off" class="el-input__inner" v-model="formbank.bank_address">
+                    </div>
+                </div>
+            </div>
+            <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">银行卡号</label>
+                <div class="el-form-item__content" style="margin-left: 80px;">
+                    <div class="el-input">
+                        <input type="text" autocomplete="off" class="el-input__inner" v-model="formbank.card_number">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="el-dialog__footer">
+            <div class="dialog-footer">
+                <button type="button" class="el-button el-button--default" @click="bankdialogVisible =false"><span>取 消</span></button>
+                <button type="button" class="el-button el-button--primary"  @click="addbank" ><span>确 定</span></button>
+            </div>
+        </div>
+    </el-dialog>
+    <el-dialog
+            :visible.sync="newdialogVisible"
+            width="30%"
+            :before-close="handleClose">
+
+        <div style="height: 420px; overflow: hidden auto;" class="">
+            <div style="height: 2000px;">
+                <div id="htmls">
+                    {{text}}
+                </div>
+            </div>
+        </div>
+        </span>
+    </el-dialog>
+    <el-dialog
+            title="提现"
+            :visible.sync="WithdrawaldialogVisibl"
+            width="30%"
+            :before-close="handleClose">
+            <el-tabs  v-model="activeName">
+            <el-tab-pane label="提现" name="first">
+                <form class="el-form">
+                    <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">开户行</label>
+                        <div class="el-form-item__content" style="margin-left: 80px;">
+                            <div class="el-input">
+                                <input type="text" autocomplete="off" class="el-input__inner" v-model="formWithdrawal.bank_address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">银行卡号</label>
+                        <div class="el-form-item__content" style="margin-left: 80px;">
+                            <div class="el-input">
+                                <input type="text" autocomplete="off" class="el-input__inner" v-model="formWithdrawal.card_number">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">姓名</label>
+                        <div class="el-form-item__content" style="margin-left: 80px;">
+                            <div class="el-input">
+                                <input type="text" autocomplete="off" class="el-input__inner" v-model="formWithdrawal.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">支付宝</label>
+                        <div class="el-form-item__content" style="margin-left: 80px;">
+                            <div class="el-input">
+                                <input type="text" autocomplete="off" class="el-input__inner" v-model="formWithdrawal.zfb">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">微信</label>
+                        <div class="el-form-item__content" style="margin-left: 80px;">
+                            <div class="el-input">
+                                <input type="text" autocomplete="off" class="el-input__inner" v-model="formWithdrawal.wexin">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">提现金额</label>
+                    <div class="el-form-item__content" style="margin-left: 80px;">
+                        <div class="el-input">
+                            <input type="text" autocomplete="off" class="el-input__inner" v-model="formWithdrawal.charge">
+                        </div>
+                    </div>
+                    </div>
+                </form>
+                <div class="el-dialog__footer">
+                    <div class="dialog-footer">
+                        <button type="button" class="el-button el-button--default" @click="WithdrawaldialogVisibl =false"><span>取 消</span></button>
+                        <button type="button" class="el-button el-button--primary"  @click="submitWithdrawal()" ><span>确 定</span></button>
+                    </div>
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="转账" name="second">
+                <form class="el-form">
+                    <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">收款人</label>
+                        <div class="el-form-item__content" style="margin-left: 80px;">
+                            <div class="el-input">
+                                <input type="text" autocomplete="off"  placeholder="对方的号码" class="el-input__inner" v-model="formtransfer.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">收款金额</label>
+                        <div class="el-form-item__content" style="margin-left: 80px;">
+                            <div class="el-input">
+                                <input type="text" autocomplete="off" class="el-input__inner" v-model="formtransfer.charge">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="el-dialog__footer">
+                    <div class="dialog-footer">
+                        <button type="button" class="el-button el-button--default" @click="WithdrawaldialogVisibl =false"><span>取 消</span></button>
+                        <button type="button" class="el-button el-button--primary"  @click="submittransfer()" ><span>确 定</span></button>
+                    </div>
+                </div>
+            </el-tab-pane>
+        </el-tabs>
+    </el-dialog>
+
+    <el-dialog
+            title="提现记录"
+            :visible.sync="tixianialogVisible"
+            width="40%"
+            :before-close="handleClose">
+        <el-table
+                :data="Withdrawalrecord"
+                style="width: 100%">
+            <el-table-column
+                    prop="bank_address"
+                    label="开户行"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="card_number"
+                    label="银行卡号"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="charge"
+                    label="提现金额">
+            </el-table-column>
+            <el-table-column
+                    prop="withdrawal_time"
+                    label="提现时间">
+            </el-table-column>
+        </el-table>
+
+    </el-dialog>
+
 </div>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script>
@@ -563,14 +642,189 @@
         el: '#app',
         data: {
             dialogVisible: false,
+            readdialogVisible: false,
+            bankdialogVisible: false,
+            WithdrawaldialogVisibl: false,
+            tixianialogVisible: false,
             title: '登录',
+            activeName: 'first',
             isActive: false,
             form: {
                 phone: '',
                 password: ""
-            }
+            },
+            formbank: {
+                card_number: '',
+                bank_address: "",
+                name: ""
+            },
+            formWithdrawal: {
+                card_number: '',
+                bank_address: "",
+                name: "",
+                zfb: "",
+                wexin: "",
+                charge: "",
+                type:1,
+            },
+            formtransfer: {
+                name: '',
+                charge: "",
+                type:2,
+
+            },
+            Withdrawalrecord:[],
+            UserInfo:{},
+            newdialogVisible: false,
+            tableData: [],
+            text:""
+        },
+        created: function () {
+             this.getUserInfo();
         },
         methods: {
+            opentixianrecode:function(){
+                this.tixianialogVisible=true;
+                this.Withdrawalrecord=[];
+                this.getWithdrawerCode()
+            },
+            getWithdrawerCode:function(){
+                var _this = this;
+                $.ajax({
+                    type: "POST",
+                    url: "{:url('user/getWithdrawerCode')}",
+                    data: this.formWithdrawal,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.code == 1) {
+                            console.log(data.data)
+                            _this.Withdrawalrecord = data.data
+                        }
+                    }
+                });
+            },
+            getUserInfo:function(){
+                var _this = this;
+                $.ajax({
+                    type: "POST",
+                    url: "{:url('user/getUserInfo')}",
+                    data: this.formWithdrawal,
+                    dataType: "json",
+                    success: function (data) {
+                        _this.UserInfo=data.data
+                    }
+                });
+            },
+            submittransfer:function(){
+                if(this.formtransfer.name==""){
+                    return false
+                }
+                if(this.formtransfer.charge==""){
+                    return false
+                }
+                var _this = this;
+                $.ajax({
+                    type: "POST",
+                    url: "{:url('user/transferMoney')}",
+                    data: this.formtransfer,
+                    dataType: "json",
+                    success: function (data) {
+                        if (parseInt(data.code) == 0) {
+                            _this.$message.error(data.msg);
+                            _this.getUserInfo();
+                        } else {
+                            _this.$message.success(data.msg);
+                        }
+                    }
+                });
+            },
+            submitWithdrawal:function(){
+
+                if(this.formWithdrawal.name==""){
+                    console.log(2)
+                    return false
+                }
+                if(this.formWithdrawal.bank_address==""){
+                    console.log(33)
+                    return false
+                }
+                if(this.formWithdrawal.card_number==""){
+                    console.log(33)
+                    return false
+                }
+                if(this.formWithdrawal.zfb==""){
+                    console.log(33)
+                    return false
+                }
+                if(this.formWithdrawal.wexin==""){
+                    console.log(33)
+                    return false
+                }
+                if(this.formWithdrawal.charge==""){
+                    console.log(33)
+                    return false
+                }
+                var _this = this;
+                $.ajax({
+                    type: "POST",
+                    url: "{:url('user/actionMoney')}",
+                    data: this.formWithdrawal,
+                    dataType: "json",
+                    success: function (data) {
+                        if (parseInt(data.code) == 0) {
+                            _this.$message.error(data.msg);
+                            _this.getUserInfo();
+                        } else {
+                            _this.$message.success(data.msg);
+                        }
+                    }
+                });
+            },
+            addbank:function(){
+                var _this = this;
+                if(this.formbank.name==""){
+                    return false
+                }
+                if(this.formbank.bank_address==""){
+                    return false
+                }
+                if(this.formbank.card_number==""){
+                    return false
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "{:url('user/addbank')}",
+                    data: this.formbank,
+                    dataType: "json",
+                    success: function (data) {
+                        if (parseInt(data.code) == 0) {
+                            _this.$message.error(data.msg);
+                        } else {
+                            _this.$message.success(data.msg);
+                        }
+                    }
+                });
+            },
+            readRecode: function () {
+                this.readdialogVisible = true;
+                this.getprofitlist();
+            },
+            getprofitlist: function () {
+                var _this = this;
+                $.ajax({
+                    type: "POST",
+                    url: "{:url('user/getprofitlist')}",
+                    data: this.form,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.code == 1) {
+                            console.log(data.data)
+                            _this.tableData = data.data
+                        }
+
+                    }
+                });
+            },
             login: function () {
                 this.dialogVisible = true
                 this.isActive = false;
@@ -582,49 +836,104 @@
             handleClose(done) {
                 done();
             },
-            submitRegister:function () {
-              if(this.CheckRule()){
-                  console.log(this.form)
-                  $.ajax({
-                      type: "POST",
-                      url: "{:url('user/register')}",
-                      data: this.form,
-                      dataType: "json",
-                      success: function(data){
-
-                      }
-                  });
-              }
+            submitRegister: function () {
+                if (this.CheckRule()) {
+                    $.ajax({
+                        type: "POST",
+                        url: "{:url('user/register')}",
+                        data: this.form,
+                        dataType: "json",
+                        success: function (data) {
+                            if (parseInt(data.code) == 0) {
+                                _this.$message.error(data.msg);
+                            } else {
+                                _this.$message.success(data.msg);
+                                setTimeout(function () {
+                                    history.go(0)
+                                }, 1000)
+                            }
+                        }
+                    });
+                }
             },
-            submitLogin:function () {
-                var _this=this;
-                if(this.CheckRule()){
+            newdetail: function (id) {
+                this.newdialogVisible = true;
+                this.getProfit(id);
+                this.watchnew(id)
+            },
+            watchnew:function(id){
+                var _this = this;
+                $.ajax({
+                    type: "POST",
+                    url: "{:url('user/watchnew')}",
+                    data: {'id': id},
+                    dataType: "json",
+                    success: function (data) {
+                        _this.text=data.data.text
+                    }
+                });
+            },
+            getProfit(id) {
+                var _this = this;
+                $.ajax({
+                    type: "POST",
+                    url: "{:url('user/getProfit')}",
+                    data: {'new_id': id},
+                    dataType: "json",
+                    success: function (data) {
+                        if (parseInt(data.code) == 0) {
+                            // _this.$message.error(data.msg);
+                        } else {
+                            // _this.$message.success(data.msg);
+                        }
+                    }
+                });
+            },
+            submitLogin: function () {
+                var _this = this;
+                if (this.CheckRule()) {
                     $.ajax({
                         type: "POST",
                         url: "{:url('user/login')}",
                         data: this.form,
                         dataType: "json",
-                        success: function(data){
-                           if(parseInt(data.code)==0){
-                               _this.$message.error(data.msg);
-                           }
-                           else{
-                               _this.$message.success(data.msg);
-                           }
+                        success: function (data) {
+                            if (parseInt(data.code) == 0) {
+                                _this.$message.error(data.msg);
+                            } else {
+                                _this.$message.success(data.msg);
+                                setTimeout(function () {
+                                    history.go(0)
+                                }, 1000)
+                            }
                         }
                     });
                 }
             },
-            CheckRule:function () {
-                 if(this.form.phone ==""){
-                     this.$message.error('电话不能为空');
-                     return false
-                 }
-                if(this.form.password ==""){
+            CheckRule: function () {
+                if (this.form.phone == "") {
+                    this.$message.error('电话不能为空');
+                    return false
+                }
+                if (this.form.password == "") {
                     this.$message.error('密码不能为空');
                     return false
                 }
-                return  true
+                return true
+            },
+            logout: function () {
+                var _this = this;
+                $.ajax({
+                    type: "POST",
+                    url: "{:url('user/logout')}",
+                    dataType: "json",
+                    success: function (data) {
+                        _this.$message.success('退出成功');
+                        setTimeout(function () {
+                            history.go(0)
+                        }, 1000)
+                    }
+                });
             }
         }
     })

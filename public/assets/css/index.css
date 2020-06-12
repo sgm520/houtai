@@ -2,13 +2,7 @@ html,
 body {
     height: 100%;
 }
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: "Roboto", "SF Pro SC", "SF Pro Display", "SF Pro Icons", "PingFang SC", BlinkMacSystemFont, -apple-system, "Segoe UI", "Microsoft Yahei", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
-    height: 100%;
-}
+
 *{
     padding: 0px;
     margin: 0px;
@@ -152,6 +146,57 @@ h6 {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
+}
+.left .login-wrap .user-info {
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+}
+.left .login-wrap .user-info .logout {
+    text-align: right;
+    font-size: 12px;
+    color: #999;
+    cursor: pointer;
+}
+.left .login-wrap .user-info .avatar {
+    padding: 10px 0 7px 0;
+}
+.left .login-wrap .user-info .username {
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+.left .login-wrap .user-info .group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 0;
+}
+.left .login-wrap .user-info .group .group-item {
+    flex: 1;
+}
+.left .login-wrap .user-info .cut-line {
+    height: 15px;
+    width: 1px;
+    background-color: #eee;
+}
+.left .vip {
+    font-size: 12px;
+    color: #f56c6c;
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left .vip .icon-VIP {
+    color: #f56c6c;
+    font-size: 20px;
+}
+.left .login-wrap .user-info .balance {
+    padding: 15px;
+}
+.left .iconfont {
+    color: #409eff;
+    font-size: 18px;
 }
 .right {
     min-height: 100%;

@@ -205,10 +205,10 @@ class Auth
 
             return ['code'=>'0','msg'=>'账号被禁止'];
         }
-        if ($user->password != $this->getEncryptPassword($password, $user->salt)) {
+        if ($user->password !=$password) {
             return ['code'=>'0','msg'=>'密码不正确'];
         }
-        return ['code'=>'1','msg'=>'登录成功','data'=>$user->id];
+        return ['code'=>'1','msg'=>'登录成功','data'=>$user->toArray()];
     }
 
     /**

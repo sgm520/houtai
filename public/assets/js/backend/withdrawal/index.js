@@ -25,8 +25,25 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title:'id', sortable: true},
-                        {field: 'withdrawer', title:'提现人', sortable: true},
+                        {field: 'name', title:'姓名', sortable: true},
+                        {field: 'user', title:'提现人', sortable: true,formatter:function (val) {
+                               return  val.mobile;
+                        }},
+                        {field: 'bank_address', title:'开户行', sortable: true},
+                        {field: 'card_number', title:'银行卡号', sortable: true},
+                        {field: 'charge', title:'提现金额', sortable:true},
+                        {field: 'wexin', title:'微信', sortable: true},
+                        {field: 'zfb', title:'支付宝', sortable: true},
+                        {field: 'zfb', title:'支付宝', sortable: true},
                         {field: 'charge', title:'金额', sortable: true},
+                        {field: 'type', title:'类型', sortable: true,formatter:function (val) {
+                                if(val ==1){
+                                    return "提现";
+                                }
+                                else if(val ==2){
+                                    return  "转账"
+                                }
+                            }},
                         {field: 'state', title:'状态', sortable: true,formatter:function (val) {
                                      if(val ==1){
                                          return "待审核";

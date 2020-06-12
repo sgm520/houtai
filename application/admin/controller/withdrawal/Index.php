@@ -4,6 +4,7 @@ namespace app\admin\controller\withdrawal;
 
 use app\common\controller\Backend;
 use think\Cache;
+use think\Db;
 
 class Index extends Backend
 {
@@ -25,7 +26,7 @@ class Index extends Backend
 
                 ->count();
             $list = $this->model
-
+                ->with('user')
                 ->limit($offset, $limit)
                 ->select();
             $result = array("total" => $total, "rows" => $list);
@@ -48,11 +49,28 @@ class Index extends Backend
         }
         if ($this->request->isPost()) {
             $params = $this->request->post("row/a", [], 'strip_tags');
+            if($row->type ==1){
+                    if($params['state'] ==3){
+                        $blance=Db::name('user')->where('id',$row['withdrawer'])->value('balance');
+                        Db::name('user')->where('id',$row['withdrawer'])->update(['balance'=>$blance+$row['charge']]);
+                    }
+            };
+            if($row->type ==2){
+                if($params['state'] ==3){
+                    $blance=Db::name('user')->where('id',$row['withdrawer'])->value('balance');
+                    Db::name('user')->where('id',$row['withdrawer'])->update(['balance'=>$blance+$row['charge']]);
+                }
+                if($params['state'] ==2){
+                    $blance=Db::name('user')->where('mobile',$row['name'])->value('balance');
+                    Db::name('user')->where('mobile',$row['name'])->update(['balance'=>$blance+$row['charge']]);
+                }
+            };
             if ($params) {
                 $result = $row->save($params);
                 if ($result === false) {
                     $this->error($row->getError());
                 }
+                if($params)
                 $this->success();
             }
             $this->error();
